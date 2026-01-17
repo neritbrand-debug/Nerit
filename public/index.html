@@ -1,524 +1,802 @@
-<!doctype html>
-<html lang="ar" dir="rtl" id="html-tag">
+<!DOCTYPE html>
+<html id="html-tag" lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NERIT - Elegance for your soul</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NERIT - أناقة تشبه هدوء روحك</title>
   <style>
-    :root{
-      --bg:#fbf7f2;
-      --text:#1f2328;
-      --muted:#6b7280;
-      --accent:#8b7d72;
-      --card:#ffffff;
-      --border:rgba(31,35,40,.10);
-      --whatsapp:#25D366;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fdfbf7;
+      color: #2c2c2c;
+      line-height: 1.6;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.7;
-      transition: all 0.3s ease;
-    }
-    [dir="ltr"] body { text-align: left; }
-    [dir="rtl"] body { text-align: right; }
     
-    a{color:inherit; text-decoration:none}
-    .container{max-width:1100px; margin:0 auto; padding:24px}
-
-    header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(10px);
-      background: rgba(251,247,242,.75);
-      border-bottom:1px solid var(--border);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px;
-    }
-    .brand{
-      display:flex; align-items:baseline; gap:10px;
-      letter-spacing:.12em;
-    }
-    .brand strong{font-size:22px}
-    .brand span{font-size:12px; color:var(--muted)}
-    .menu{display:flex; gap:18px; font-size:14px; color:var(--muted)}
-
-    .lang-switch {
-      cursor: pointer;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      font-size: 12px;
-      font-weight: 600;
-      background: var(--card);
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 16px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:var(--card);
-      font-weight:600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn:hover{
-      opacity: 0.8;
-      transform: translateY(-1px);
-    }
-    .btn.primary{
-      background:var(--text);
-      color:var(--bg);
-      border-color:transparent;
-    }
-
-    .hero{
-      padding:44px 0 22px;
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:28px;
-      align-items:center;
-    }
-    .hero h1{
-      margin:0;
-      font-size:44px;
-      letter-spacing:.14em;
-    }
-    .hero p{
-      margin:10px 0 18px;
-      color:var(--muted);
-      max-width:52ch;
-    }
-
-    .pill{display:flex; gap:10px; flex-wrap:wrap}
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .section{padding:22px 0}
-    h2{margin:0 0 10px; font-size:22px}
-    .muted{color:var(--muted)}
-
-    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
-
-    .tag{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      color:var(--muted);
-      font-size:12px;
-      margin:6px 6px 0 0;
-    }
-
-    .product{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-height:170px;
-      padding: 0;
-    }
-    .product-info{
-      padding: 18px;
-      padding-top: 0;
-    }
-
-    .ph-img{
-      width: 100%;
-      height:350px;
-      object-fit: cover;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-img{
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-
-    footer{
-      border-top:1px solid var(--border);
-      padding:18px 0;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .row{display:flex; gap:10px; flex-wrap:wrap}
-    input{
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      background:#fff;
-      min-width:260px;
-      font-size:14px;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      background-color: var(--whatsapp);
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50px;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e8e2d9;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
       z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    
+    nav {
+      display: flex;
+      gap: 30px;
+      flex: 1;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #2c2c2c;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover { color: #8e9e82; }
+    
+    .header-right {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    
+    .lang-btn {
+      cursor: pointer;
+      padding: 8px 16px;
+      border: 1px solid #e8e2d9;
+      border-radius: 5px;
+      background: #fff;
+      transition: all 0.3s;
+    }
+    
+    .lang-btn:hover { background: #f5f5f5; }
+    
+    .btn {
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      font-size: 14px;
+    }
+    
+    .btn-primary {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    
+    .btn-primary:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+    
+    .hero {
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      color: #6b6b6b;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid #e8e2d9;
+    }
+    
+    h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #e8e2d9;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      background: #f5f5f5;
+    }
+    
+    .product-info {
+      padding: 20px;
+    }
+    
+    .product-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .product-desc {
+      font-size: 13px;
+      color: #6b6b6b;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    
+    .product-specs {
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 12px;
+    }
+    
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .spec-row:last-child {
+      border-bottom: none;
+    }
+    
+    .spec-label {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .spec-value {
+      color: #666;
+    }
+    
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 10px;
+    }
+    
+    .view-btn {
+      width: 100%;
+      padding: 10px;
+      background: #8e9e82;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    
+    .view-btn:hover {
+      background: #7a8a6e;
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    
+    .modal.active {
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
     }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      background-color: #128C7E;
+    
+    .modal-content {
+      background: #fff;
+      border-radius: 15px;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
     }
-
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid3{grid-template-columns:1fr}
-      .grid4{grid-template-columns:repeat(2,1fr)}
-      .hero h1{font-size:38px}
-      .menu{display:none}
-      .hero-img{height: 350px;}
+    
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      background: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    
+    .modal-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 15px 15px 0 0;
+    }
+    
+    .modal-details {
+      padding: 40px;
+    }
+    
+    .modal-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    
+    .modal-desc {
+      font-size: 16px;
+      color: #6b6b6b;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+    
+    .modal-specs {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .modal-spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+    }
+    
+    .modal-spec-row:last-child {
+      border-bottom: none;
+    }
+    
+    .order-btn {
+      width: 100%;
+      padding: 15px;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .order-btn:hover {
+      background: #1fa857;
+    }
+    
+    footer {
+      background: #fff;
+      border-top: 1px solid #e8e2d9;
+      padding: 40px 0;
+      text-align: center;
+      color: #6b6b6b;
+    }
+    
+    .contact-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f9f9f9;
+      border-radius: 15px;
+      margin-bottom: 40px;
+    }
+    
+    .delivery-info {
+      background: #fff3cd;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      color: #856404;
+      font-weight: bold;
+    }
+    
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      h1 {
+        font-size: 36px;
+      }
+      
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .modal-content {
+        width: 95%;
+      }
     }
   </style>
 </head>
-
 <body>
 
-<a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20الاستفسار%20عن%20منتجاتكم" class="whatsapp-float" target="_blank" id="wa-float">
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-
 <header>
-  <div class="container nav">
-    <div class="brand">
-      <strong>NERIT</strong>
-      <span id="slogan">أناقة تشبه هدوء روحكِ</span>
-    </div>
-
-    <nav class="menu">
-      <a href="#collections" id="nav-collections">المجموعات</a>
-      <a href="#about" id="nav-about">قصتنا</a>
-      <a href="#featured" id="nav-featured">مختارات</a>
-      <a href="#contact" id="nav-contact">تواصل</a>
-    </nav>
-
-    <div style="display:flex; gap:10px; align-items:center;">
-      <div class="lang-switch" onclick="toggleLang()" id="lang-btn">English</div>
-      <a class="btn primary" href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20الطلب%20من%20الموقع" target="_blank" id="shop-now-btn">تسوّقي الآن</a>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">NERIT</div>
+      <nav>
+        <a href="#featured" id="nav-featured">مختاراتنا</a>
+        <a href="#about" id="nav-about">قصتنا</a>
+        <a href="#contact" id="nav-contact">تواصل</a>
+      </nav>
+      <div class="header-right">
+        <button class="lang-btn" onclick="toggleLang()" id="lang-btn">English</button>
+        <a href="#featured" class="btn btn-primary" id="shop-btn">تسوّقي الآن</a>
+      </div>
     </div>
   </div>
 </header>
 
 <main class="container">
-
-  <!-- HERO -->
   <section class="hero">
-    <div>
-      <h1 id="hero-title">NERIT</h1>
-      <p id="hero-desc">
-        NERIT مساحة أنثوية هادئة تحتضن الروح قبل الجسد.
-        نصمّم للمرأة كما هي — دفء، احتواء، وأناقة بلا صخب.
-      </p>
-
-      <div class="pill">
-        <a class="btn primary" href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20الطلب%20من%20الموقع" target="_blank" id="hero-shop-btn">تسوّقي الآن</a>
-        <a class="btn" href="#about" id="hero-discover-btn">اكتشفي قصتنا</a>
-      </div>
-
-      <div style="margin-top: 20px;">
-        <span class="tag" id="tag1">أنوثة تُحتضَن</span>
-        <span class="tag" id="tag2">جمال لكل الأجسام</span>
-        <span class="tag" id="tag3">خامات مريحة</span>
-      </div>
-    </div>
-
-    <div>
-      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/zJzWZDDmNCdSZdbJ.jpg" alt="NERIT Hero" class="hero-img">
-    </div>
+    <h1 id="hero-title">NERIT</h1>
+    <p id="hero-desc">NERIT مساحة أنثوية هادئة تحتضن الروح قبل الجسد. نختار بعناية من أفضل الماركات العالمية ونعرضها بأسعار منافسة.</p>
   </section>
 
-  <!-- COLLECTIONS -->
-  <section id="collections" class="section">
-    <h2 id="coll-title">المجموعات</h2>
-    <p class="muted" id="coll-desc">ثلاثة اتجاهات كبداية… ونطوّرها معكِ.</p>
-
-    <div class="grid3">
-      <div class="card">
-        <h3 id="coll1-name">Everyday Softness</h3>
-        <p class="muted" id="coll1-desc">أساسيات أنثوية ناعمة للاستخدام اليومي.</p>
-      </div>
-      <div class="card">
-        <h3 id="coll2-name">Warm Elegance</h3>
-        <p class="muted" id="coll2-desc">أناقة دافئة للمناسبات بدون مبالغة.</p>
-      </div>
-      <div class="card">
-        <h3 id="coll3-name">Soul Pieces</h3>
-        <p class="muted" id="coll3-desc">قطع تحمل معنى… هدوء يشبه روحك.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="card">
-      <h2 id="about-title">قصتنا</h2>
-      <p class="muted" id="about-desc">
-        NERIT اسم لمسني من الداخل… لأنه يذكّرني أن جمال المرأة
-        لا يُقاس بمقياس واحد. نحتفي بالاختلاف، ونصمّم ملابس
-        تُشعركِ بالأمان مع أنوثتك.
-      </p>
-    </div>
-  </section>
-
-  <!-- FEATURED -->
   <section id="featured" class="section">
-    <h2 id="feat-title">مختارات NERIT</h2>
-    <p class="muted" id="feat-desc">أحدث القطع من مجموعتنا الخاصة.</p>
+    <h2 id="feat-title">مختاراتنا</h2>
+    <div class="products-grid" id="products-grid"></div>
+  </section>
 
-    <div class="grid4">
-      <div class="card product">
-        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/AXaWVJzepbrOIKqZ.jpg" alt="Product 01" class="ph-img">
-        <div class="product-info">
-          <strong id="p1-name">قطعة 01</strong>
-          <span class="muted" id="p1-desc">فستان عصري بنقوش هندسية</span>
-          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2001" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p1-btn">طلب عبر واتساب</a>
-        </div>
-      </div>
-      <div class="card product">
-        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/zJzWZDDmNCdSZdbJ.jpg" alt="Product 02" class="ph-img">
-        <div class="product-info">
-          <strong id="p2-name">قطعة 02</strong>
-          <span class="muted" id="p2-desc">فستان طويل بنقوش زهور ناعمة</span>
-          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2002" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p2-btn">طلب عبر واتساب</a>
-        </div>
-      </div>
-      <div class="card product">
-        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/OxOTFDyLfHwjEILf.jpg" alt="Product 03" class="ph-img">
-        <div class="product-info">
-          <strong id="p3-name">قطعة 03</strong>
-          <span class="muted" id="p3-desc">جمبسوت مريح بألوان متعددة</span>
-          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2003" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p3-btn">طلب عبر واتساب</a>
-        </div>
-      </div>
-      <div class="card product">
-        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/enZmJGDcmWNpqFaT.jpg" alt="Product 04" class="ph-img">
-        <div class="product-info">
-          <strong id="p4-name">قطعة 04</strong>
-          <span class="muted" id="p4-desc">فستان كتان ناعم وعملي</span>
-          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2004" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p4-btn">طلب عبر واتساب</a>
-        </div>
-      </div>
+  <section id="about" class="section">
+    <h2 id="about-title">قصتنا</h2>
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <p id="about-desc" style="font-size: 18px; color: #6b6b6b; line-height: 1.8;">
+        NERIT اسم لمسني من الداخل… لأنه يذكّرني أن جمال المرأة لا يُقاس بمقياس واحد. نحتفي بالاختلاف، ونختار من أفضل الماركات العالمية قطعاً فريدة تُشعركِ بالأمان مع أنوثتك.
+      </p>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact" class="section">
-    <div class="card">
-      <h2 id="contact-title">تواصل</h2>
-      <p class="muted" id="contact-desc">نحن هنا للاستماع إليكِ عبر الواتساب.</p>
-      <div class="row">
-        <a href="https://wa.me/966569899563" class="btn primary" target="_blank" style="border-radius: 12px;">
-          WhatsApp: +966 56 989 9563
-        </a>
-        <span class="tag">Instagram: @nerit.brand</span>
-      </div>
+    <h2 id="contact-title">تواصل معنا</h2>
+    <div class="contact-section">
+      <p id="contact-desc" style="font-size: 16px; margin-bottom: 20px;">نحن هنا للاستماع إليكِ عبر الواتساب أو البريد الإلكتروني.</p>
+      <div class="delivery-info" id="delivery-info">التوصيل حالياً داخل مدينة جدة فقط.</div>
+      <p style="font-size: 16px; margin: 20px 0;">
+        <strong>WhatsApp:</strong> <a href="https://wa.me/966569899563" target="_blank" style="color: #25d366;">+966 56 989 9563</a>
+      </p>
+      <p style="font-size: 16px;">
+        <strong>Instagram:</strong> @nerit.brand
+      </p>
     </div>
   </section>
-
 </main>
 
 <footer>
-  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap">
-    <div>© <span id="year"></span> NERIT</div>
-    <div id="footer-calm">Made with calm ✦</div>
+  <div class="container">
+    <p id="footer-text">صُنع بكل هدوء ✦ © 2026 NERIT</p>
   </div>
 </footer>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+<!-- Product Detail Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <img id="modal-image" class="modal-image" src="" alt="">
+    <div class="modal-details">
+      <h2 id="modal-title" class="modal-title"></h2>
+      <p id="modal-desc" class="modal-desc"></p>
+      <div class="modal-specs">
+        <div class="modal-spec-row">
+          <span class="spec-label" id="sku-label">رمز المنتج:</span>
+          <span id="modal-sku"></span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="spec-label" id="color-label">اللون:</span>
+          <span id="modal-color"></span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="spec-label" id="size-label">المقاس:</span>
+          <span id="modal-size"></span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="spec-label" id="weight-label">الوزن:</span>
+          <span id="modal-weight"></span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="spec-label" id="price-label">السعر:</span>
+          <span id="modal-price" style="font-weight: bold; font-size: 16px;"></span>
+        </div>
+      </div>
+      <a id="modal-order-btn" href="" class="order-btn" target="_blank">طلب عبر واتساب</a>
+    </div>
+  </div>
+</div>
 
+<script>
   let currentLang = 'ar';
+
   const translations = {
     ar: {
-      slogan: "أناقة تشبه هدوء روحكِ",
-      navCollections: "المجموعات",
-      navAbout: "قصتنا",
-      navFeatured: "مختارات",
-      navContact: "تواصل",
-      shopNow: "تسوّقي الآن",
-      langBtn: "English",
       heroTitle: "NERIT",
-      heroDesc: "NERIT مساحة أنثوية هادئة تحتضن الروح قبل الجسد. نصمّم للمرأة كما هي — دفء، احتواء، وأناقة بلا صخب.",
-      heroDiscover: "اكتشفي قصتنا",
-      tag1: "أنوثة تُحتضَن",
-      tag2: "جمال لكل الأجسام",
-      tag3: "خامات مريحة",
-      collTitle: "المجموعات",
-      collDesc: "ثلاثة اتجاهات كبداية… ونطوّرها معكِ.",
-      coll1Name: "Everyday Softness",
-      coll1Desc: "أساسيات أنثوية ناعمة للاستخدام اليومي.",
-      coll2Name: "Warm Elegance",
-      coll2Desc: "أناقة دافئة للمناسبات بدون مبالغة.",
-      coll3Name: "Soul Pieces",
-      coll3Desc: "قطع تحمل معنى… هدوء يشبه روحك.",
+      heroDesc: "NERIT مساحة أنثوية هادئة تحتضن الروح قبل الجسد. نختار بعناية من أفضل الماركات العالمية ونعرضها بأسعار منافسة.",
+      featTitle: "مختاراتنا",
       aboutTitle: "قصتنا",
-      aboutDesc: "NERIT اسم لمسني من الداخل… لأنه يذكّرني أن جمال المرأة لا يُقاس بمقياس واحد. نحتفي بالاختلاف، ونصمّم ملابس تُشعركِ بالأمان مع أنوثتك.",
-      featTitle: "مختارات NERIT",
-      featDesc: "أحدث القطع من مجموعتنا الخاصة.",
-      pName: "قطعة",
-      p1Desc: "فستان عصري بنقوش هندسية",
-      p2Desc: "فستان طويل بنقوش زهور ناعمة",
-      p3Desc: "جمبسوت مريح بألوان متعددة",
-      p4Desc: "فستان كتان ناعم وعملي",
-      waOrder: "طلب عبر واتساب",
-      contactTitle: "تواصل",
-      contactDesc: "نحن هنا للاستماع إليكِ عبر الواتساب.",
-      footerCalm: "صُنع بكل هدوء ✦",
-      waMsg: "مرحباً%20NERIT،%20أود%20الاستفسار%20عن%20منتجاتكم",
-      waOrderMsg: "مرحباً%20NERIT،%20أود%20الطلب%20من%20الموقع",
-      waP1: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2001",
-      waP2: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2002",
-      waP3: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2003",
-      waP4: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2004"
+      aboutDesc: "NERIT اسم لمسني من الداخل… لأنه يذكّرني أن جمال المرأة لا يُقاس بمقياس واحد. نحتفي بالاختلاف، ونختار من أفضل الماركات العالمية قطعاً فريدة تُشعركِ بالأمان مع أنوثتك.",
+      contactTitle: "تواصل معنا",
+      contactDesc: "نحن هنا للاستماع إليكِ عبر الواتساب أو البريد الإلكتروني.",
+      deliveryInfo: "التوصيل حالياً داخل مدينة جدة فقط.",
+      footerText: "صُنع بكل هدوء ✦ © 2026 NERIT",
+      shopBtn: "تسوّقي الآن",
+      langBtn: "English",
+      skuLabel: "رمز المنتج:",
+      colorLabel: "اللون:",
+      sizeLabel: "المقاس:",
+      weightLabel: "الوزن:",
+      priceLabel: "السعر:",
+      orderBtn: "طلب عبر واتساب",
+      viewBtn: "عرض التفاصيل",
+      p1Name: "قطعة 01",
+      p1Desc: "فستان بليسيه أبيض بنقوش زهور زرقاء بياقة مربعة وبدون أكمام",
+      p2Name: "قطعة 02",
+      p2Desc: "فستان بليسيه أبيض بنقوش زهور زرقاء بياقة V وأكمام طويلة",
+      p3Name: "قطعة 03",
+      p3Desc: "فستان بليسيه أبيض بنقوش زهور خضراء بياقة V وأكمام طويلة",
+      p4Name: "قطعة 04",
+      p4Desc: "فستان أبيض كلاسيكي بياقة قميص وتصميم ملفوف",
+      p5Name: "قطعة 05",
+      p5Desc: "جمبسوت أسود بدون أكمام بياقة مربعة",
+      p6Name: "قطعة 06",
+      p6Desc: "فستان بنقوش هندسية زرقاء وبيضاء بياقة دائرية",
+      p7Name: "قطعة 07",
+      p7Desc: "جمبسوت أخضر بدون أكمام بياقة مربعة",
+      p8Name: "قطعة 08",
+      p8Desc: "فستان كتان ناعم بلون كحلي بياقة V وأكمام قصيرة",
+      p9Name: "قطعة 09",
+      p9Desc: "فستان كتان ناعم بلون القنب بياقة V وأكمام قصيرة"
     },
     en: {
-      slogan: "Elegance that mirrors your soul's calm",
-      navCollections: "Collections",
-      navAbout: "Our Story",
-      navFeatured: "Featured",
-      navContact: "Contact",
-      shopNow: "Shop Now",
-      langBtn: "العربية",
       heroTitle: "NERIT",
-      heroDesc: "NERIT is a calm feminine space that embraces the soul before the body. We design for women as they are — warmth, containment, and elegance without noise.",
-      heroDiscover: "Discover Our Story",
-      tag1: "Embraced Femininity",
-      tag2: "Beauty for All Bodies",
-      tag3: "Comfortable Fabrics",
-      collTitle: "Collections",
-      collDesc: "Three directions to start... and we develop them with you.",
-      coll1Name: "Everyday Softness",
-      coll1Desc: "Soft feminine basics for daily use.",
-      coll2Name: "Warm Elegance",
-      coll2Desc: "Warm elegance for occasions without exaggeration.",
-      coll3Name: "Soul Pieces",
-      coll3Desc: "Pieces with meaning... a calm that resembles your soul.",
+      heroDesc: "NERIT is a calm feminine space that embraces the soul before the body. We carefully select from the world's finest brands and offer them at competitive prices.",
+      featTitle: "Our Collections",
       aboutTitle: "Our Story",
-      aboutDesc: "NERIT is a name that touched me from within... because it reminds me that a woman's beauty is not measured by one standard. We celebrate difference and design clothes that make you feel safe with your femininity.",
-      featTitle: "NERIT Featured",
-      featDesc: "Latest pieces from our special collection.",
-      pName: "Piece",
-      p1Desc: "Modern dress with geometric patterns",
-      p2Desc: "Long dress with soft floral patterns",
-      p3Desc: "Comfortable jumpsuit in multiple colors",
-      p4Desc: "Soft and practical linen dress",
-      waOrder: "Order via WhatsApp",
-      contactTitle: "Contact",
-      contactDesc: "We are here to listen to you via WhatsApp.",
-      footerCalm: "Made with calm ✦",
-      waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20inquire%20about%20your%20products",
-      waOrderMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20from%20the%20website",
-      waP1: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2001",
-      waP2: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2002",
-      waP3: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2003",
-      waP4: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2004"
+      aboutDesc: "NERIT is a name that touched me from within... because it reminds me that a woman's beauty is not measured by one standard. We celebrate difference and choose unique pieces from the world's finest brands to make you feel safe with your femininity.",
+      contactTitle: "Contact Us",
+      contactDesc: "We are here to listen to you via WhatsApp or email.",
+      deliveryInfo: "Delivery is currently available within Jeddah only.",
+      footerText: "Made with calm ✦ © 2026 NERIT",
+      shopBtn: "Shop Now",
+      langBtn: "العربية",
+      skuLabel: "SKU:",
+      colorLabel: "Color:",
+      sizeLabel: "Size:",
+      weightLabel: "Weight:",
+      priceLabel: "Price:",
+      orderBtn: "Order via WhatsApp",
+      viewBtn: "View Details",
+      p1Name: "Piece 01",
+      p1Desc: "White pleated dress with blue floral print, square neckline, and sleeveless design",
+      p2Name: "Piece 02",
+      p2Desc: "White pleated dress with blue floral print, V-neck, and long sleeves",
+      p3Name: "Piece 03",
+      p3Desc: "White pleated dress with green floral print, V-neck, and long sleeves",
+      p4Name: "Piece 04",
+      p4Desc: "Classic white collared wrap dress",
+      p5Name: "Piece 05",
+      p5Desc: "Black sleeveless jumpsuit with square neckline",
+      p6Name: "Piece 06",
+      p6Desc: "Blue and white geometric pattern dress with round neckline",
+      p7Name: "Piece 07",
+      p7Desc: "Green sleeveless jumpsuit with square neckline",
+      p8Name: "Piece 08",
+      p8Desc: "Navy blue linen dress with V-neck and short sleeves",
+      p9Name: "Piece 09",
+      p9Desc: "Soft hemp-colored linen dress with V-neck and short sleeves"
     }
   };
 
+  const products = [
+    { id: 1, image: "assets/products/final/p1.jpg", sku: "NH45447211", color: "White and Blue", size: "L", price: "SAR 129.99", weight: "0.315 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2001" },
+    { id: 2, image: "assets/products/final/p2.jpg", sku: "NH47029119", color: "All Colors", size: "M", price: "SAR 189.99", weight: "0.28 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2002" },
+    { id: 3, image: "assets/products/final/p3.jpg", sku: "NH46675797", color: "Light Yellow", size: "M", price: "SAR 189.99", weight: "0.28 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2003" },
+    { id: 4, image: "assets/products/final/p4.jpg", sku: "NH36126581", color: "White", size: "L", price: "SAR 119.99", weight: "0.315 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2004" },
+    { id: 5, image: "assets/products/final/p5.jpg", sku: "NH31233665", color: "Black", size: "L", price: "SAR 99.99", weight: "0.29 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2005" },
+    { id: 6, image: "assets/products/final/p6.jpg", sku: "NH36126596", color: "Navy Blue Printing", size: "L", price: "SAR 119.99", weight: "0.315 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2006" },
+    { id: 7, image: "assets/products/final/p7.jpg", sku: "NH31233656", color: "Green", size: "M", price: "SAR 99.99", weight: "0.29 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2007" },
+    { id: 8, image: "assets/products/final/p8.jpg", sku: "NH45709792", color: "Navy Blue", size: "M", price: "SAR 109.99", weight: "0.21 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2008" },
+    { id: 9, image: "assets/products/final/p9.jpg", sku: "NH45709789", color: "Hemp Color", size: "L", price: "SAR 109.99", weight: "0.21 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2009" }
+  ];
+
   function toggleLang() {
     currentLang = currentLang === 'ar' ? 'en' : 'ar';
-    const t = translations[currentLang];
-    
-    document.getElementById("html-tag").setAttribute("lang", currentLang);
-    document.getElementById("html-tag").setAttribute("dir", currentLang === 'ar' ? 'rtl' : 'ltr');
-    
-    document.getElementById("slogan").textContent = t.slogan;
-    document.getElementById("nav-collections").textContent = t.navCollections;
-    document.getElementById("nav-about").textContent = t.navAbout;
-    document.getElementById("nav-featured").textContent = t.navFeatured;
-    document.getElementById("nav-contact").textContent = t.navContact;
-    document.getElementById("shop-now-btn").textContent = t.shopNow;
-    document.getElementById("lang-btn").textContent = t.langBtn;
-    
-    document.getElementById("hero-title").textContent = t.heroTitle;
-    document.getElementById("hero-desc").textContent = t.heroDesc;
-    document.getElementById("hero-shop-btn").textContent = t.shopNow;
-    document.getElementById("hero-discover-btn").textContent = t.heroDiscover;
-    
-    document.getElementById("tag1").textContent = t.tag1;
-    document.getElementById("tag2").textContent = t.tag2;
-    document.getElementById("tag3").textContent = t.tag3;
-    
-    document.getElementById("coll-title").textContent = t.collTitle;
-    document.getElementById("coll-desc").textContent = t.collDesc;
-    document.getElementById("coll1-name").textContent = t.coll1Name;
-    document.getElementById("coll1-desc").textContent = t.coll1Desc;
-    document.getElementById("coll2-name").textContent = t.coll2Name;
-    document.getElementById("coll2-desc").textContent = t.coll2Desc;
-    document.getElementById("coll3-name").textContent = t.coll3Name;
-    document.getElementById("coll3-desc").textContent = t.coll3Desc;
-    
-    document.getElementById("about-title").textContent = t.aboutTitle;
-    document.getElementById("about-desc").textContent = t.aboutDesc;
-    
-    document.getElementById("feat-title").textContent = t.featTitle;
-    document.getElementById("feat-desc").textContent = t.featDesc;
-    
-    document.getElementById("p1-name").textContent = t.pName + " 01";
-    document.getElementById("p1-desc").textContent = t.p1Desc;
-    document.getElementById("p1-btn").textContent = t.waOrder;
-    
-    document.getElementById("p2-name").textContent = t.pName + " 02";
-    document.getElementById("p2-desc").textContent = t.p2Desc;
-    document.getElementById("p2-btn").textContent = t.waOrder;
-    
-    document.getElementById("p3-name").textContent = t.pName + " 03";
-    document.getElementById("p3-desc").textContent = t.p3Desc;
-    document.getElementById("p3-btn").textContent = t.waOrder;
-    
-    document.getElementById("p4-name").textContent = t.pName + " 04";
-    document.getElementById("p4-desc").textContent = t.p4Desc;
-    document.getElementById("p4-btn").textContent = t.waOrder;
-    
-    document.getElementById("contact-title").textContent = t.contactTitle;
-    document.getElementById("contact-desc").textContent = t.contactDesc;
-    document.getElementById("footer-calm").textContent = t.footerCalm;
-
-    // Update WhatsApp links
-    document.getElementById("wa-float").href = `https://wa.me/966569899563?text=${t.waMsg}`;
-    document.getElementById("shop-now-btn").href = `https://wa.me/966569899563?text=${t.waOrderMsg}`;
-    document.getElementById("hero-shop-btn").href = `https://wa.me/966569899563?text=${t.waOrderMsg}`;
-    document.getElementById("p1-btn").href = `https://wa.me/966569899563?text=${t.waP1}`;
-    document.getElementById("p2-btn").href = `https://wa.me/966569899563?text=${t.waP2}`;
-    document.getElementById("p3-btn").href = `https://wa.me/966569899563?text=${t.waP3}`;
-    document.getElementById("p4-btn").href = `https://wa.me/966569899563?text=${t.waP4}`;
+    updateContent();
   }
+
+  function updateContent() {
+    const t = translations[currentLang];
+    const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    
+    document.getElementById('html-tag').dir = dir;
+    document.getElementById('html-tag').lang = currentLang;
+    
+    document.getElementById('hero-title').textContent = t.heroTitle;
+    document.getElementById('hero-desc').textContent = t.heroDesc;
+    document.getElementById('feat-title').textContent = t.featTitle;
+    document.getElementById('about-title').textContent = t.aboutTitle;
+    document.getElementById('about-desc').textContent = t.aboutDesc;
+    document.getElementById('contact-title').textContent = t.contactTitle;
+    document.getElementById('contact-desc').textContent = t.contactDesc;
+    document.getElementById('delivery-info').textContent = t.deliveryInfo;
+    document.getElementById('footer-text').textContent = t.footerText;
+    document.getElementById('shop-btn').textContent = t.shopBtn;
+    document.getElementById('lang-btn').textContent = t.langBtn;
+    document.getElementById('nav-featured').textContent = t.featTitle;
+    document.getElementById('nav-about').textContent = t.aboutTitle;
+    document.getElementById('nav-contact').textContent = t.contactTitle;
+    
+    document.getElementById('sku-label').textContent = t.skuLabel;
+    document.getElementById('color-label').textContent = t.colorLabel;
+    document.getElementById('size-label').textContent = t.sizeLabel;
+    document.getElementById('weight-label').textContent = t.weightLabel;
+    document.getElementById('price-label').textContent = t.priceLabel;
+    
+    renderProducts();
+  }
+
+  function renderProducts() {
+    const t = translations[currentLang];
+    const grid = document.getElementById('products-grid');
+    grid.innerHTML = '';
+    
+    products.forEach(p => {
+      const pKey = `p${p.id}`;
+      const name = t[`${pKey}Name`];
+      const desc = t[`${pKey}Desc`];
+      
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${p.image}" alt="${name}" class="product-image">
+        <div class="product-info">
+          <div class="product-name">${name}</div>
+          <div class="product-desc">${desc}</div>
+          <div class="product-specs">
+            <div class="spec-row">
+              <span class="spec-label">${t.colorLabel}</span>
+              <span class="spec-value">${p.color}</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">${t.sizeLabel}</span>
+              <span class="spec-value">${p.size}</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">${t.priceLabel}</span>
+              <span class="spec-value" style="font-weight: bold;">${p.price}</span>
+            </div>
+          </div>
+          <button class="view-btn" onclick="openModal(${p.id})">${t.viewBtn}</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function openModal(productId) {
+    const t = translations[currentLang];
+    const p = products.find(pr => pr.id === productId);
+    const pKey = `p${productId}`;
+    
+    document.getElementById('modal-image').src = p.image;
+    document.getElementById('modal-title').textContent = t[`${pKey}Name`];
+    document.getElementById('modal-desc').textContent = t[`${pKey}Desc`];
+    document.getElementById('modal-sku').textContent = p.sku;
+    document.getElementById('modal-color').textContent = p.color;
+    document.getElementById('modal-size').textContent = p.size;
+    document.getElementById('modal-weight').textContent = p.weight;
+    document.getElementById('modal-price').textContent = p.price;
+    document.getElementById('modal-order-btn').href = `https://wa.me/966569899563?text=${p.waMsg}`;
+    document.getElementById('modal-order-btn').textContent = t.orderBtn;
+    
+    document.getElementById('productModal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('productModal').classList.remove('active');
+  }
+
+  document.addEventListener('DOMContentLoaded', updateContent);
+
+  // AI Assistant
+  const aiAssistant = {
+    isOpen: false,
+    messages: [],
+    
+    toggle() {
+      this.isOpen = !this.isOpen;
+      const chatBox = document.getElementById('ai-chat-box');
+      chatBox.style.display = this.isOpen ? 'flex' : 'none';
+      if (this.isOpen && this.messages.length === 0) {
+        this.addMessage('bot', currentLang === 'ar' ? 'مرحباً بكِ في NERIT! 👋 كيف يمكنني مساعدتكِ اليوم؟ يمكنكِ السؤال عن المنتجات والأسعار والمقاسات.' : 'Welcome to NERIT! 👋 How can I help you today? You can ask about products, prices, and sizes.');
+      }
+    },
+    
+    addMessage(sender, text) {
+      this.messages.push({ sender, text });
+      const messagesDiv = document.getElementById('ai-messages');
+      const msgEl = document.createElement('div');
+      msgEl.className = `ai-message ai-${sender}`;
+      msgEl.textContent = text;
+      messagesDiv.appendChild(msgEl);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    },
+    
+    sendMessage(text) {
+      if (!text.trim()) return;
+      this.addMessage('user', text);
+      document.getElementById('ai-input').value = '';
+      
+      // Simulate AI response
+      setTimeout(() => {
+        const response = this.generateResponse(text);
+        this.addMessage('bot', response);
+      }, 500);
+    },
+    
+    generateResponse(query) {
+      const q = query.toLowerCase();
+      const t = translations[currentLang];
+      
+      // Check for product queries
+      for (let i = 1; i <= 9; i++) {
+        const p = products[i - 1];
+        if (q.includes(i.toString()) || q.includes(`قطعة ${i}`) || q.includes(`piece ${i}`)) {
+          return currentLang === 'ar' 
+            ? `القطعة ${i}: ${t[`p${i}Name`]} - السعر: ${p.price} - المقاس: ${p.size} - اللون: ${p.color}`
+            : `Piece ${i}: ${t[`p${i}Name`]} - Price: ${p.price} - Size: ${p.size} - Color: ${p.color}`;
+        }
+      }
+      
+      // Check for price queries
+      if (q.includes('سعر') || q.includes('price')) {
+        return currentLang === 'ar'
+          ? 'الأسعار تتراوح بين SAR 30.65 و SAR 67.28. هل تريدين معرفة سعر قطعة معينة؟'
+          : 'Prices range from SAR 30.65 to SAR 67.28. Would you like to know the price of a specific piece?';
+      }
+      
+      // Check for size queries
+      if (q.includes('مقاس') || q.includes('size')) {
+        return currentLang === 'ar'
+          ? 'المقاسات المتوفرة: M و L. هل تريدين معرفة المقاسات المتوفرة لقطعة معينة؟'
+          : 'Available sizes: M and L. Would you like to know the available sizes for a specific piece?';
+      }
+      
+      // Check for color queries
+      if (q.includes('لون') || q.includes('color')) {
+        return currentLang === 'ar'
+          ? 'لدينا مجموعة متنوعة من الألوان: أبيض، أسود، أزرق كحلي، أخضر، وألوان أخرى. هل تريدين لون معين؟'
+          : 'We have a variety of colors: white, black, navy blue, green, and more. Are you looking for a specific color?';
+      }
+      
+      // Check for delivery queries
+      if (q.includes('توصيل') || q.includes('delivery')) {
+        return currentLang === 'ar'
+          ? 'التوصيل حالياً متاح داخل مدينة جدة فقط. هل تودين الطلب الآن؟'
+          : 'Delivery is currently available within Jeddah only. Would you like to place an order?';
+      }
+      
+      // Default response
+      return currentLang === 'ar'
+        ? 'شكراً على سؤالكِ! يمكنكِ السؤال عن أي قطعة بالرقم (1-9) أو عن الأسعار والمقاسات. 😊'
+        : 'Thank you for your question! You can ask about any piece by number (1-9) or about prices and sizes. 😊';
+    }
+  };
 </script>
+
+<!-- AI Assistant Chat -->
+<div id="ai-chat-widget" style="position: fixed; bottom: 30px; right: 30px; z-index: 999;">
+  <button id="ai-toggle" onclick="aiAssistant.toggle()" style="
+    width: 60px; height: 60px; border-radius: 50%; background: #25d366; color: white;
+    border: none; font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+  " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</button>
+  
+  <div id="ai-chat-box" style="
+    display: none; position: absolute; bottom: 80px; right: 0; width: 350px; height: 500px;
+    background: white; border-radius: 15px; box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+    flex-direction: column; overflow: hidden;
+  ">
+    <div style="background: #25d366; color: white; padding: 15px; font-weight: bold; text-align: center;">
+      <span id="ai-title">مساعد NERIT الذكي</span>
+    </div>
+    
+    <div id="ai-messages" style="flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 10px;"></div>
+    
+    <div style="padding: 10px; border-top: 1px solid #eee; display: flex; gap: 10px;">
+      <input id="ai-input" type="text" placeholder="اكتبي سؤالكِ..." style="
+        flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px;
+        font-size: 14px; outline: none;
+      " onkeypress="if(event.key==='Enter') aiAssistant.sendMessage(this.value)">
+      <button onclick="aiAssistant.sendMessage(document.getElementById('ai-input').value)" style="
+        background: #25d366; color: white; border: none; border-radius: 50%; width: 40px; height: 40px;
+        cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center;
+      ">➤</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ai-message {
+    padding: 10px 12px; border-radius: 12px; max-width: 85%; word-wrap: break-word;
+    font-size: 14px; line-height: 1.4;
+  }
+  .ai-user {
+    background: #25d366; color: white; align-self: flex-end; margin-right: 10px;
+  }
+  .ai-bot {
+    background: #f0f0f0; color: #333; align-self: flex-start; margin-left: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    #ai-chat-box {
+      width: 90vw !important;
+      height: 60vh !important;
+      bottom: 80px !important;
+      right: 5vw !important;
+    }
+  }
+</style>
 
 </body>
 </html>

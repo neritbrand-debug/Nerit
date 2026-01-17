@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="ar" dir="rtl" id="html-tag">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NERIT - Elegance for your soul</title>
+
+  <style>
+    :root{
+      --bg:#fbf7f2;
+      --text:#1f2328;
+      --muted:#6b7280;
+      --accent:#8b7d72;
+      --card:#ffffff;
+      --border:rgba(31,35,40,.10);
+      --whatsapp:#25D366;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+      transition: all 0.3s ease;
+    }
+    [dir="ltr"] body { text-align: left; }
+    [dir="rtl"] body { text-align: right; }
+    
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:24px}
+
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(251,247,242,.75);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:baseline; gap:10px;
+      letter-spacing:.12em;
+    }
+    .brand strong{font-size:22px}
+    .brand span{font-size:12px; color:var(--muted)}
+    .menu{display:flex; gap:18px; font-size:14px; color:var(--muted)}
+
+    .lang-switch {
+      cursor: pointer;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--card);
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--card);
+      font-weight:600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover{
+      opacity: 0.8;
+      transform: translateY(-1px);
+    }
+    .btn.primary{
+      background:var(--text);
+      color:var(--bg);
+      border-color:transparent;
+    }
+
+    .hero{
+      padding:44px 0 22px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0;
+      font-size:44px;
+      letter-spacing:.14em;
+    }
+    .hero p{
+      margin:10px 0 18px;
+      color:var(--muted);
+      max-width:52ch;
+    }
+
+    .pill{display:flex; gap:10px; flex-wrap:wrap}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:0; /* Removed padding to let image fill top */
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .section{padding:22px 0}
+    h2{margin:0 0 10px; font-size:22px}
+    .muted{color:var(--muted)}
+
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+
+    .tag{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);
+      font-size:12px;
+      margin:6px 6px 0 0;
+    }
+
+    .product-info{
+      padding: 18px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ph-img{
+      width: 100%;
+      height: 400px; /* Fixed height for all images */
+      object-fit: cover; /* Fill the area without white spaces */
+      object-position: center top; /* Focus on the top/middle of the dress */
+      display: block;
+    }
+
+    .hero-img{
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:18px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background-color: var(--whatsapp);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #128C7E;
+    }
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .grid4{grid-template-columns:repeat(2,1fr)}
+      .hero h1{font-size:38px}
+      .menu{display:none}
+      .hero-img{height: 350px;}
+      .ph-img{height: 300px;}
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- AI Chat Widget -->
+<div id="ai-chat-widget" style="position: fixed; bottom: 100px; left: 30px; z-index: 1000; font-family: inherit;">
+  <div id="chat-window" style="display: none; width: 320px; height: 450px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); flex-direction: column; overflow: hidden; border: 1px solid var(--border);">
+    <div style="background: var(--text); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 10px; height: 10px; background: #4ade80; border-radius: 50%;"></div>
+        <span style="font-weight: 600; font-size: 14px;">مساعد NERIT الذكي</span>
+      </div>
+      <button onclick="toggleChat()" style="background: none; border: none; color: white; cursor: pointer; font-size: 20px;">&times;</button>
+    </div>
+    <div id="chat-messages" style="flex-grow: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 13px; background: #f9f9f9;">
+      <div style="background: #eee; padding: 10px; border-radius: 15px 15px 15px 0; align-self: flex-start; max-width: 80%;">
+        أهلاً بكِ في NERIT.. أنا مساعدكِ الذكي، كيف يمكنني مساعدتكِ في اختيار ما يناسب هدوء روحكِ اليوم؟ ✨
+      </div>
+    </div>
+    <div style="padding: 10px; border-top: 1px solid var(--border); display: flex; gap: 5px;">
+      <input type="text" id="chat-input" placeholder="اسألي عن الفساتين..." style="flex-grow: 1; border: 1px solid var(--border); border-radius: 20px; padding: 8px 15px; outline: none; font-size: 13px;">
+      <button onclick="sendMessage()" style="background: var(--text); color: white; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 10px; flex-direction: row-reverse;">
+    <button onclick="toggleChat()" style="background: var(--text); color: white; width: 70px; height: 70px; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; animation: pulse 2s infinite;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </button>
+    <div style="background: white; padding: 8px 15px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 12px; font-weight: 600; border: 1px solid var(--border); white-space: nowrap;">اسألي مساعد NERIT ✨</div>
+  </div>
+
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,0,0,0.4); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0,0,0,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+    }
+  </style>
+</div>
+
+<a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20الاستفسار%20عن%20منتجاتكم" class="whatsapp-float" target="_blank" id="wa-float">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <strong>NERIT</strong>
+      <span id="slogan">أناقة تشبه هدوء روحكِ</span>
+    </div>
+
+    <nav class="menu">
+      <a href="#collections" id="nav-collections">المجموعات</a>
+      <a href="#about" id="nav-about">قصتنا</a>
+      <a href="#featured" id="nav-featured">مختارات</a>
+      <a href="#contact" id="nav-contact">تواصل</a>
+    </nav>
+
+    <div style="display:flex; gap:10px; align-items:center;">
+      <div class="lang-switch" onclick="toggleLang()" id="lang-btn">English</div>
+      <a class="btn primary" href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20الاستفسار%20عن%20الطلب" target="_blank" id="shop-now-btn">تسوّقي الآن</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1 id="hero-title">NERIT</h1>
+      <p id="hero-desc">
+        NERIT مساحة أنثوية هادئة تحتضن الروح قبل الجسد.
+        نصمّم للمرأة كما هي — دفء، احتواء، وأناقة بلا صخب.
+      </p>
+
+      <div class="pill">
+        <a class="btn primary" href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20الطلب%20من%20الموقع" target="_blank" id="hero-shop-btn">تسوّقي الآن</a>
+        <a class="btn" href="#about" id="hero-discover-btn">اكتشفي قصتنا</a>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <span class="tag" id="tag1">أنوثة تُحتضَن</span>
+        <span class="tag" id="tag2">جمال لكل الأجسام</span>
+        <span class="tag" id="tag3">خامات مريحة</span>
+      </div>
+    </div>
+
+    <div>
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/MhNFHxdpWjVauTaR.jpeg" alt="NERIT Hero" class="hero-img">
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section id="collections" class="section">
+    <h2 id="coll-title">المجموعات</h2>
+    <p class="muted" id="coll-desc">ثلاثة اتجاهات كبداية… ونطوّرها معكِ.</p>
+
+    <div class="grid3">
+      <div class="card" style="padding: 18px;">
+        <h3 id="coll1-name">Everyday Softness</h3>
+        <p class="muted" id="coll1-desc">أساسيات أنثوية ناعمة للاستخدام اليومي.</p>
+      </div>
+      <div class="card" style="padding: 18px;">
+        <h3 id="coll2-name">Warm Elegance</h3>
+        <p class="muted" id="coll2-desc">أناقة دافئة للمناسبات بدون مبالغة.</p>
+      </div>
+      <div class="card" style="padding: 18px;">
+        <h3 id="coll3-name">Soul Pieces</h3>
+        <p class="muted" id="coll3-desc">قطع تحمل معنى… هدوء يشبه روحك.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="card" style="padding: 18px;">
+      <h2 id="about-title">قصتنا</h2>
+      <p class="muted" id="about-desc">
+        NERIT اسم لمسني من الداخل… لأنه يذكّرني أن جمال المرأة
+        لا يُقاس بمقياس واحد. نحتفي بالاختلاف، ونصمّم ملابس
+        تُشعركِ بالأمان مع أنوثتك.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section id="featured" class="section">
+    <h2 id="feat-title">مختارات NERIT</h2>
+    <p class="muted" id="feat-desc">أحدث القطع من مجموعتنا الخاصة.</p>
+
+    <div class="grid4">
+      <!-- Product 05 -->
+      <div class="card">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/PUgoigHYsMbMPARS.jpeg" alt="Product 05" class="ph-img">
+        <div class="product-info">
+          <div>
+            <strong id="p5-name">قطعة 05</strong><br>
+            <span class="muted" id="p5-desc">فستان أبيض بليسيه بنقوش زرقاء</span>
+          </div>
+          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2005" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p5-btn">طلب عبر واتساب</a>
+        </div>
+      </div>
+      <!-- Product 06 -->
+      <div class="card">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/MhNFHxdpWjVauTaR.jpeg" alt="Product 06" class="ph-img">
+        <div class="product-info">
+          <div>
+            <strong id="p6-name">قطعة 06</strong><br>
+            <span class="muted" id="p6-desc">فستان بليسيه ناعم بنقوش خضراء</span>
+          </div>
+          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2006" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p6-btn">طلب عبر واتساب</a>
+        </div>
+      </div>
+      <!-- Product 07 -->
+      <div class="card">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/uqUAbxIFtzlNzNId.jpeg" alt="Product 07" class="ph-img">
+        <div class="product-info">
+          <div>
+            <strong id="p7-name">قطعة 07</strong><br>
+            <span class="muted" id="p7-desc">فستان صيفي بنقوش زهور زرقاء</span>
+          </div>
+          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2007" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p7-btn">طلب عبر واتساب</a>
+        </div>
+      </div>
+      <!-- Product 01 -->
+      <div class="card">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/qwKNdrwcfmqUtort.jpg" alt="Product 01" class="ph-img">
+        <div class="product-info">
+          <div>
+            <strong id="p1-name">قطعة 01</strong><br>
+            <span class="muted" id="p1-desc">فستان عصري بنقوش هندسية</span>
+          </div>
+          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2001" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p1-btn">طلب عبر واتساب</a>
+        </div>
+      </div>
+      <!-- Product 02 -->
+      <div class="card">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/KYuiWoBQnQfWPkeM.jpg" alt="Product 02" class="ph-img">
+        <div class="product-info">
+          <div>
+            <strong id="p2-name">قطعة 02</strong><br>
+            <span class="muted" id="p2-desc">فستان طويل بنقوش زهور ناعمة</span>
+          </div>
+          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2002" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p2-btn">طلب عبر واتساب</a>
+        </div>
+      </div>
+      <!-- Product 03 -->
+      <div class="card">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/BaxTOhLnxWCdtBMH.jpg" alt="Product 03" class="ph-img">
+        <div class="product-info">
+          <div>
+            <strong id="p3-name">قطعة 03</strong><br>
+            <span class="muted" id="p3-desc">جمبسوت مريح بألوان متعددة</span>
+          </div>
+          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2003" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p3-btn">طلب عبر واتساب</a>
+        </div>
+      </div>
+      <!-- Product 04 -->
+      <div class="card">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663220887148/OUKpyudwChIhlTwF.jpg" alt="Product 04" class="ph-img">
+        <div class="product-info">
+          <div>
+            <strong id="p4-name">قطعة 04</strong><br>
+            <span class="muted" id="p4-desc">فستان كتان ناعم وعملي</span>
+          </div>
+          <a href="https://wa.me/966569899563?text=مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2004" class="btn primary wa-order" style="margin-top:10px; width:100%; font-size:14px;" target="_blank" id="p4-btn">طلب عبر واتساب</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="card" style="padding: 18px;">
+      <h2 id="contact-title">تواصل</h2>
+      <p class="muted" id="contact-desc">نحن هنا للاستماع إليكِ عبر الواتساب أو الإيميل الرسمي.</p>
+      <div class="row">
+        <a href="https://wa.me/966569899563" class="btn primary" target="_blank" style="border-radius: 12px;">
+          WhatsApp: +966 56 989 9563
+        </a>
+        <span class="tag">Instagram: @nerit.brand</span>
+        <span class="tag">Email: nerit.brand@gmail.com</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap">
+    <div>© <span id="year"></span> NERIT</div>
+    <div id="footer-calm">Made with calm ✦</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  let currentLang = 'ar';
+  const translations = {
+    ar: {
+      slogan: "أناقة تشبه هدوء روحكِ",
+      navCollections: "المجموعات",
+      navAbout: "قصتنا",
+      navFeatured: "مختارات",
+      navContact: "تواصل",
+      shopNow: "تسوّقي الآن",
+      langBtn: "English",
+      heroTitle: "NERIT",
+      heroDesc: "NERIT مساحة أنثوية هادئة تحتضن الروح قبل الجسد. نصمّم للمرأة كما هي — دفء، احتواء، وأناقة بلا صخب.",
+      heroDiscover: "اكتشفي قصتنا",
+      tag1: "أنوثة تُحتضَن",
+      tag2: "جمال لكل الأجسام",
+      tag3: "خامات مريحة",
+      collTitle: "المجموعات",
+      collDesc: "ثلاثة اتجاهات كبداية… ونطوّرها معكِ.",
+      coll1Name: "Everyday Softness",
+      coll1Desc: "أساسيات أنثوية ناعمة للاستخدام اليومي.",
+      coll2Name: "Warm Elegance",
+      coll2Desc: "أناقة دافئة للمناسبات بدون مبالغة.",
+      coll3Name: "Soul Pieces",
+      coll3Desc: "قطع تحمل معنى… هدوء يشبه روحك.",
+      aboutTitle: "قصتنا",
+      aboutDesc: "NERIT اسم لمسني من الداخل… لأنه يذكّرني أن جمال المرأة لا يُقاس بمقياس واحد. نحتفي بالاختلاف، ونصمّم ملابس تُشعركِ بالأمان مع أنوثتك.",
+      featTitle: "مختارات NERIT",
+      featDesc: "أحدث القطع من مجموعتنا الخاصة.",
+      pName: "قطعة",
+      p1Desc: "فستان عصري بنقوش هندسية",
+      p2Desc: "فستان طويل بنقوش زهور ناعمة",
+      p3Desc: "جمبسوت مريح بألوان متعددة",
+      p4Desc: "فستان كتان ناعم وعملي",
+      p5Desc: "فستان أبيض بليسيه بنقوش زرقاء",
+      p6Desc: "فستان بليسيه ناعم بنقوش خضراء",
+      p7Desc: "فستان صيفي بنقوش زهور زرقاء",
+      waOrder: "طلب عبر واتساب",
+      contactTitle: "تواصل",
+      contactDesc: "نحن هنا للاستماع إليكِ عبر الواتساب أو الإيميل الرسمي.",
+      footerCalm: "صُنع بكل هدوء ✦",
+      waMsg: "مرحباً%20NERIT،%20أود%20الاستفسار%20عن%20منتجاتكم",
+      waOrderMsg: "مرحباً%20NERIT،%20أود%20الطلب%20من%20الموقع",
+      waP1: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2001",
+      waP2: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2002",
+      waP3: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2003",
+      waP4: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2004",
+      waP5: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2005",
+      waP6: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2006",
+      waP7: "مرحباً%20NERIT،%20أود%20طلب%20القطعة%20رقم%2007"
+    },
+    en: {
+      slogan: "Elegance that mirrors your soul's calm",
+      navCollections: "Collections",
+      navAbout: "Our Story",
+      navFeatured: "Featured",
+      navContact: "Contact",
+      shopNow: "Shop Now",
+      langBtn: "العربية",
+      heroTitle: "NERIT",
+      heroDesc: "NERIT is a calm feminine space that embraces the soul before the body. We design for women as they are — warmth, containment, and elegance without noise.",
+      heroDiscover: "Discover Our Story",
+      tag1: "Embraced Femininity",
+      tag2: "Beauty for All Bodies",
+      tag3: "Comfortable Fabrics",
+      collTitle: "Collections",
+      collDesc: "Three directions to start... and we develop them with you.",
+      coll1Name: "Everyday Softness",
+      coll1Desc: "Soft feminine basics for daily use.",
+      coll2Name: "Warm Elegance",
+      coll2Desc: "Warm elegance for occasions without exaggeration.",
+      coll3Name: "Soul Pieces",
+      coll3Desc: "Pieces with meaning... a calm that resembles your soul.",
+      aboutTitle: "Our Story",
+      aboutDesc: "NERIT is a name that touched me from within... because it reminds me that a woman's beauty is not measured by one standard. We celebrate difference and design clothes that make you feel safe with your femininity.",
+      featTitle: "NERIT Featured",
+      featDesc: "Latest pieces from our special collection.",
+      pName: "Piece",
+      p1Desc: "Modern dress with geometric patterns",
+      p2Desc: "Long dress with soft floral patterns",
+      p3Desc: "Comfortable jumpsuit in multiple colors",
+      p4Desc: "Soft and practical linen dress",
+      p5Desc: "White pleated dress with blue patterns",
+      p6Desc: "Soft pleated dress with green patterns",
+      p7Desc: "Summer dress with blue floral patterns",
+      waOrder: "Order via WhatsApp",
+      contactTitle: "Contact",
+      contactDesc: "We are here to listen to you via WhatsApp or official Email.",
+      footerCalm: "Made with calm ✦",
+      waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20inquire%20about%20your%20products",
+      waOrderMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20from%20the%20website",
+      waP1: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2001",
+      waP2: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2002",
+      waP3: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2003",
+      waP4: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2004",
+      waP5: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2005",
+      waP6: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2006",
+      waP7: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2007"
+    }
+  };
+
+  function toggleLang() {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    const t = translations[currentLang];
+    
+    document.getElementById("html-tag").setAttribute("lang", currentLang);
+    document.getElementById("html-tag").setAttribute("dir", currentLang === 'ar' ? 'rtl' : 'ltr');
+    
+    document.getElementById("slogan").textContent = t.slogan;
+    document.getElementById("nav-collections").textContent = t.navCollections;
+    document.getElementById("nav-about").textContent = t.navAbout;
+    document.getElementById("nav-featured").textContent = t.navFeatured;
+    document.getElementById("nav-contact").textContent = t.navContact;
+    document.getElementById("shop-now-btn").textContent = t.shopNow;
+    document.getElementById("lang-btn").textContent = t.langBtn;
+    
+    document.getElementById("hero-title").textContent = t.heroTitle;
+    document.getElementById("hero-desc").textContent = t.heroDesc;
+    document.getElementById("hero-shop-btn").textContent = t.shopNow;
+    document.getElementById("hero-discover-btn").textContent = t.heroDiscover;
+    
+    document.getElementById("tag1").textContent = t.tag1;
+    document.getElementById("tag2").textContent = t.tag2;
+    document.getElementById("tag3").textContent = t.tag3;
+    
+    document.getElementById("coll-title").textContent = t.collTitle;
+    document.getElementById("coll-desc").textContent = t.collDesc;
+    document.getElementById("coll1-name").textContent = t.coll1Name;
+    document.getElementById("coll1-desc").textContent = t.coll1Desc;
+    document.getElementById("coll2-name").textContent = t.coll2Name;
+    document.getElementById("coll2-desc").textContent = t.coll2Desc;
+    document.getElementById("coll3-name").textContent = t.coll3Name;
+    document.getElementById("coll3-desc").textContent = t.coll3Desc;
+    
+    document.getElementById("about-title").textContent = t.aboutTitle;
+    document.getElementById("about-desc").textContent = t.aboutDesc;
+    
+    document.getElementById("feat-title").textContent = t.featTitle;
+    document.getElementById("feat-desc").textContent = t.featDesc;
+    
+    document.getElementById("p1-name").textContent = t.pName + " 01";
+    document.getElementById("p1-desc").textContent = t.p1Desc;
+    document.getElementById("p1-btn").textContent = t.waOrder;
+    
+    document.getElementById("p2-name").textContent = t.pName + " 02";
+    document.getElementById("p2-desc").textContent = t.p2Desc;
+    document.getElementById("p2-btn").textContent = t.waOrder;
+    
+    document.getElementById("p3-name").textContent = t.pName + " 03";
+    document.getElementById("p3-desc").textContent = t.p3Desc;
+    document.getElementById("p3-btn").textContent = t.waOrder;
+    
+    document.getElementById("p4-name").textContent = t.pName + " 04";
+    document.getElementById("p4-desc").textContent = t.p4Desc;
+    document.getElementById("p4-btn").textContent = t.waOrder;
+
+    document.getElementById("p5-name").textContent = t.pName + " 05";
+    document.getElementById("p5-desc").textContent = t.p5Desc;
+    document.getElementById("p5-btn").textContent = t.waOrder;
+
+    document.getElementById("p6-name").textContent = t.pName + " 06";
+    document.getElementById("p6-desc").textContent = t.p6Desc;
+    document.getElementById("p6-btn").textContent = t.waOrder;
+
+    document.getElementById("p7-name").textContent = t.pName + " 07";
+    document.getElementById("p7-desc").textContent = t.p7Desc;
+    document.getElementById("p7-btn").textContent = t.waOrder;
+    
+    document.getElementById("contact-title").textContent = t.contactTitle;
+    document.getElementById("contact-desc").textContent = t.contactDesc;
+    document.getElementById("footer-calm").textContent = t.footerCalm;
+
+    // Update WhatsApp links
+    document.getElementById("wa-float").href = `https://wa.me/966569899563?text=${t.waMsg}`;
+    document.getElementById("shop-now-btn").href = `https://wa.me/966569899563?text=${t.waOrderMsg}`;
+    document.getElementById("hero-shop-btn").href = `https://wa.me/966569899563?text=${t.waOrderMsg}`;
+    document.getElementById("p1-btn").href = `https://wa.me/966569899563?text=${t.waP1}`;
+    document.getElementById("p2-btn").href = `https://wa.me/966569899563?text=${t.waP2}`;
+    document.getElementById("p3-btn").href = `https://wa.me/966569899563?text=${t.waP3}`;
+    document.getElementById("p4-btn").href = `https://wa.me/966569899563?text=${t.waP4}`;
+    document.getElementById("p5-btn").href = `https://wa.me/966569899563?text=${t.waP5}`;
+    document.getElementById("p6-btn").href = `https://wa.me/966569899563?text=${t.waP6}`;
+    document.getElementById("p7-btn").href = `https://wa.me/966569899563?text=${t.waP7}`;
+  }
+
+  function toggleChat() {
+    const chatWindow = document.getElementById('chat-window');
+    chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    const messages = document.getElementById('chat-messages');
+    
+    // User message
+    const userDiv = document.createElement('div');
+    userDiv.style = "background: var(--accent); color: white; padding: 10px; border-radius: 15px 15px 0 15px; align-self: flex-end; max-width: 80%;";
+    userDiv.textContent = text;
+    messages.appendChild(userDiv);
+    
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+
+    // AI Response (Simulated logic for NERIT)
+    setTimeout(() => {
+      const aiDiv = document.createElement('div');
+      aiDiv.style = "background: #eee; padding: 10px; border-radius: 15px 15px 15px 0; align-self: flex-start; max-width: 80%;";
+      
+      let response = "شكراً لسؤالكِ.. نحن في NERIT نهتم بكل تفصيل. هل تودين معرفة المزيد عن قطعة معينة من مجموعتنا؟";
+      
+      const lowerText = text.toLowerCase();
+      if (text.includes("فستان") || text.includes("قطعة")) {
+        response = "لدينا 7 قطع مميزة حالياً. الأكثر طلباً هي القطعة 05 (البليسيه الأبيض) والقطعة 01 (الهندسية). أي ستايل تفضلين؟";
+      } else if (text.includes("سعر") || text.includes("بكم")) {
+        response = "أسعارنا تتراوح بين 350 إلى 450 ريال سعودي، شاملة الجودة والهدوء الذي تستحقينه. يمكنكِ الضغط على 'طلب عبر واتساب' لمعرفة السعر الدقيق لكل قطعة.";
+      } else if (text.includes("توصيل") || text.includes("شحن")) {
+        response = "نعم، نشحن لجميع مناطق المملكة العربية السعودية. التوصيل عادة يستغرق 3-5 أيام عمل.";
+      } else if (text.includes("من انتم") || text.includes("نيريت")) {
+        response = "NERIT هو براند أزياء سعودي ناشئ، نؤمن أن الأناقة تبدأ من الداخل. نصمم ملابس تشبه هدوء روحكِ.";
+      }
+
+      aiDiv.textContent = response;
+      messages.appendChild(aiDiv);
+      messages.scrollTop = messages.scrollHeight;
+    }, 1000);
+  }
+
+  document.getElementById('chat-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+</script>
+
+</body>
+</html>
