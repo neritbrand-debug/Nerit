@@ -68,6 +68,33 @@
     
     .lang-btn:hover { background: #f5f5f5; }
     
+    .cart-toggle {
+      position: relative;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #8e9e82;
+      color: #fff;
+      font-size: 10px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
     .btn {
       padding: 12px 24px;
       border-radius: 30px;
@@ -131,7 +158,6 @@
       overflow: hidden;
       border: 1px solid #e8e2d9;
       transition: all 0.3s;
-      cursor: pointer;
     }
     
     .product-card:hover {
@@ -191,15 +217,13 @@
       color: #666;
     }
     
-    .price {
-      font-size: 18px;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 10px;
+    .product-actions {
+      display: flex;
+      gap: 10px;
     }
     
     .view-btn {
-      width: 100%;
+      flex: 1;
       padding: 10px;
       background: #8e9e82;
       color: #fff;
@@ -212,6 +236,25 @@
     
     .view-btn:hover {
       background: #7a8a6e;
+    }
+    
+    .add-cart-btn {
+      padding: 10px;
+      background: #fff;
+      color: #8e9e82;
+      border: 1px solid #8e9e82;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .add-cart-btn:hover {
+      background: #8e9e82;
+      color: #fff;
     }
     
     /* Modal Styles */
@@ -262,49 +305,54 @@
     
     .modal-image {
       width: 100%;
-      height: 400px;
+      height: 500px;
       object-fit: cover;
       border-radius: 15px 15px 0 0;
     }
     
     .modal-details {
-      padding: 40px;
+      padding: 25px;
     }
     
     .modal-title {
-      font-size: 28px;
-      margin-bottom: 20px;
+      font-size: 20px;
+      margin-bottom: 12px;
       font-weight: bold;
     }
     
     .modal-desc {
-      font-size: 16px;
+      font-size: 13px;
       color: #6b6b6b;
-      margin-bottom: 30px;
-      line-height: 1.8;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
     
     .modal-specs {
       background: #f9f9f9;
-      padding: 20px;
+      padding: 15px;
       border-radius: 10px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     
     .modal-spec-row {
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
+      padding: 8px 0;
       border-bottom: 1px solid #eee;
-      font-size: 15px;
+      font-size: 12px;
     }
     
     .modal-spec-row:last-child {
       border-bottom: none;
     }
     
+    .modal-actions {
+      display: flex;
+      gap: 15px;
+    }
+    
     .order-btn {
-      width: 100%;
+      flex: 2;
       padding: 15px;
       background: #25d366;
       color: #fff;
@@ -314,10 +362,225 @@
       font-weight: bold;
       cursor: pointer;
       transition: background 0.3s;
+      text-align: center;
+      text-decoration: none;
     }
     
     .order-btn:hover {
       background: #1fa857;
+    }
+    
+    .modal-add-cart {
+      flex: 1;
+      padding: 15px;
+      background: #fff;
+      color: #8e9e82;
+      border: 1px solid #8e9e82;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .modal-add-cart:hover {
+      background: #8e9e82;
+      color: #fff;
+    }
+    
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      z-index: 1100;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .cart-sidebar.active {
+      right: 0;
+    }
+    
+    .cart-header {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    
+    .cart-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    
+    .cart-item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .cart-item-info {
+      flex: 1;
+    }
+    
+    .cart-item-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .cart-item-price {
+      font-size: 14px;
+      color: #8e9e82;
+      font-weight: bold;
+    }
+    
+    .cart-item-remove {
+      cursor: pointer;
+      color: #ff4d4d;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid #eee;
+      background: #fdfbf7;
+    }
+    
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    
+    .checkout-btn {
+      width: 100%;
+      padding: 15px;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    /* AI Assistant Styles */
+    .ai-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+      border: none;
+    }
+    
+    .ai-chat-box {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      height: 450px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+      overflow: hidden;
+      border: 1px solid #e8e2d9;
+    }
+    
+    .ai-header {
+      background: #25d366;
+      color: #fff;
+      padding: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .ai-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .ai-message {
+      padding: 10px 15px;
+      border-radius: 15px;
+      max-width: 80%;
+      font-size: 14px;
+    }
+    
+    .ai-bot {
+      background: #f0f0f0;
+      align-self: flex-start;
+    }
+    
+    .ai-user {
+      background: #dcf8c6;
+      align-self: flex-end;
+    }
+    
+    .ai-input-area {
+      padding: 15px;
+      border-top: 1px solid #eee;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .ai-input {
+      flex: 1;
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      outline: none;
+    }
+    
+    .ai-send {
+      background: #25d366;
+      color: #fff;
+      border: none;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
     }
     
     footer {
@@ -347,13 +610,18 @@
     
     @media (max-width: 768px) {
       .header-content {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 10px;
       }
       
       nav {
-        flex-direction: column;
-        gap: 10px;
+        display: none;
+      }
+      
+      .cart-sidebar {
+        width: 100%;
+        right: -100%;
       }
       
       h1 {
@@ -366,6 +634,11 @@
       
       .modal-content {
         width: 95%;
+      }
+      
+      .ai-chat-box {
+        width: calc(100% - 40px);
+        right: 20px;
       }
     }
   </style>
@@ -383,6 +656,10 @@
       </nav>
       <div class="header-right">
         <button class="lang-btn" onclick="toggleLang()" id="lang-btn">English</button>
+        <button class="cart-toggle" onclick="toggleCart()">
+          🛒
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
         <a href="#featured" class="btn btn-primary" id="shop-btn">تسوّقي الآن</a>
       </div>
     </div>
@@ -430,6 +707,27 @@
   </div>
 </footer>
 
+<!-- Cart Sidebar -->
+<div id="cartSidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <h3 id="cart-title">سلة التسوق</h3>
+    <button onclick="toggleCart()" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <!-- Items will be added here -->
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span id="total-label">الإجمالي:</span>
+      <span id="cart-total-price">SAR 0.00</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">
+      <span id="checkout-btn-text">إتمام الطلب عبر واتساب</span>
+      <span>📱</span>
+    </button>
+  </div>
+</div>
+
 <!-- Product Detail Modal -->
 <div id="productModal" class="modal">
   <div class="modal-content">
@@ -460,13 +758,28 @@
           <span id="modal-price" style="font-weight: bold; font-size: 16px;"></span>
         </div>
       </div>
-      <a id="modal-order-btn" href="" class="order-btn" target="_blank">طلب عبر واتساب</a>
+      <div class="modal-actions">
+        <a id="modal-order-btn" href="" class="order-btn" target="_blank">طلب الآن</a>
+        <button id="modal-add-cart-btn" class="modal-add-cart" onclick="">إضافة للسلة</button>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- AI Assistant -->
+<button class="ai-toggle" id="ai-toggle" onclick="aiAssistant.toggle()">💬</button>
+<div class="ai-chat-box" id="ai-chat-box">
+  <div class="ai-header" id="ai-header">المساعد الذكي NERIT</div>
+  <div class="ai-messages" id="ai-messages"></div>
+  <div class="ai-input-area">
+    <input type="text" id="ai-input" class="ai-input" placeholder="اكتبي سؤالكِ..." onkeypress="if(event.key==='Enter') aiAssistant.sendMessage(this.value)">
+    <button class="ai-send" onclick="aiAssistant.sendMessage(document.getElementById('ai-input').value)">➤</button>
   </div>
 </div>
 
 <script>
   let currentLang = 'ar';
+  let cart = [];
 
   const translations = {
     ar: {
@@ -486,8 +799,16 @@
       sizeLabel: "المقاس:",
       weightLabel: "الوزن:",
       priceLabel: "السعر:",
-      orderBtn: "طلب عبر واتساب",
+      orderBtn: "طلب الآن",
       viewBtn: "عرض التفاصيل",
+      cartTitle: "سلة التسوق",
+      totalLabel: "الإجمالي:",
+      checkoutBtn: "إتمام الطلب عبر واتساب",
+      addCart: "إضافة للسلة",
+      remove: "حذف",
+      emptyCart: "السلة فارغة",
+      aiHeader: "المساعد الذكي NERIT",
+      aiPlaceholder: "اكتبي سؤالكِ...",
       p1Name: "قطعة 01",
       p1Desc: "فستان بليسيه أبيض بنقوش زهور زرقاء بياقة مربعة وبدون أكمام",
       p2Name: "قطعة 02",
@@ -524,8 +845,16 @@
       sizeLabel: "Size:",
       weightLabel: "Weight:",
       priceLabel: "Price:",
-      orderBtn: "Order via WhatsApp",
+      orderBtn: "Order Now",
       viewBtn: "View Details",
+      cartTitle: "Shopping Cart",
+      totalLabel: "Total:",
+      checkoutBtn: "Checkout via WhatsApp",
+      addCart: "Add to Cart",
+      remove: "Remove",
+      emptyCart: "Cart is empty",
+      aiHeader: "NERIT AI Assistant",
+      aiPlaceholder: "Type your question...",
       p1Name: "Piece 01",
       p1Desc: "White pleated dress with blue floral print, square neckline, and sleeveless design",
       p2Name: "Piece 02",
@@ -547,17 +876,7 @@
     }
   };
 
-  const products = [
-    { id: 1, image: "assets/products/final/p1.jpg", sku: "NH45447211", color: "White and Blue", size: "L", price: "SAR 129.99", weight: "0.315 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2001" },
-    { id: 2, image: "assets/products/final/p2.jpg", sku: "NH47029119", color: "All Colors", size: "M", price: "SAR 189.99", weight: "0.28 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2002" },
-    { id: 3, image: "assets/products/final/p3.jpg", sku: "NH46675797", color: "Light Yellow", size: "M", price: "SAR 189.99", weight: "0.28 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2003" },
-    { id: 4, image: "assets/products/final/p4.jpg", sku: "NH36126581", color: "White", size: "L", price: "SAR 119.99", weight: "0.315 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2004" },
-    { id: 5, image: "assets/products/final/p5.jpg", sku: "NH31233665", color: "Black", size: "L", price: "SAR 99.99", weight: "0.29 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2005" },
-    { id: 6, image: "assets/products/final/p6.jpg", sku: "NH36126596", color: "Navy Blue Printing", size: "L", price: "SAR 119.99", weight: "0.315 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2006" },
-    { id: 7, image: "assets/products/final/p7.jpg", sku: "NH31233656", color: "Green", size: "M", price: "SAR 99.99", weight: "0.29 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2007" },
-    { id: 8, image: "assets/products/final/p8.jpg", sku: "NH45709792", color: "Navy Blue", size: "M", price: "SAR 109.99", weight: "0.21 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2008" },
-    { id: 9, image: "assets/products/final/p9.jpg", sku: "NH45709789", color: "Hemp Color", size: "L", price: "SAR 109.99", weight: "0.21 kg", waMsg: "Hello%20NERIT,%20I%20would%20like%20to%20order%20piece%20number%2009" }
-  ];
+  const products = [];
 
   function toggleLang() {
     currentLang = currentLang === 'ar' ? 'en' : 'ar';
@@ -586,13 +905,14 @@
     document.getElementById('nav-about').textContent = t.aboutTitle;
     document.getElementById('nav-contact').textContent = t.contactTitle;
     
-    document.getElementById('sku-label').textContent = t.skuLabel;
-    document.getElementById('color-label').textContent = t.colorLabel;
-    document.getElementById('size-label').textContent = t.sizeLabel;
-    document.getElementById('weight-label').textContent = t.weightLabel;
-    document.getElementById('price-label').textContent = t.priceLabel;
+    document.getElementById('cart-title').textContent = t.cartTitle;
+    document.getElementById('total-label').textContent = t.totalLabel;
+    document.getElementById('checkout-btn-text').textContent = t.checkoutBtn;
+    document.getElementById('ai-header').textContent = t.aiHeader;
+    document.getElementById('ai-input').placeholder = t.aiPlaceholder;
     
     renderProducts();
+    updateCartUI();
   }
 
   function renderProducts() {
@@ -623,10 +943,13 @@
             </div>
             <div class="spec-row">
               <span class="spec-label">${t.priceLabel}</span>
-              <span class="spec-value" style="font-weight: bold;">${p.price}</span>
+              <span class="spec-value" style="font-weight: bold;">SAR ${p.price.toFixed(2)}</span>
             </div>
           </div>
-          <button class="view-btn" onclick="openModal(${p.id})">${t.viewBtn}</button>
+          <div class="product-actions">
+            <button class="view-btn" onclick="openModal(${p.id})">${t.viewBtn}</button>
+            <button class="add-cart-btn" onclick="addToCart(${p.id})">🛒</button>
+          </div>
         </div>
       `;
       grid.appendChild(card);
@@ -645,9 +968,15 @@
     document.getElementById('modal-color').textContent = p.color;
     document.getElementById('modal-size').textContent = p.size;
     document.getElementById('modal-weight').textContent = p.weight;
-    document.getElementById('modal-price').textContent = p.price;
-    document.getElementById('modal-order-btn').href = `https://wa.me/966569899563?text=${p.waMsg}`;
+    document.getElementById('modal-price').textContent = `SAR ${p.price.toFixed(2)}`;
+    
+    const waMsg = encodeURIComponent(`Hello NERIT, I would like to order ${t[`p${productId}Name`]}`);
+    document.getElementById('modal-order-btn').href = `https://wa.me/966569899563?text=${waMsg}`;
     document.getElementById('modal-order-btn').textContent = t.orderBtn;
+    
+    const addBtn = document.getElementById('modal-add-cart-btn');
+    addBtn.textContent = t.addCart;
+    addBtn.onclick = () => { addToCart(productId); closeModal(); };
     
     document.getElementById('productModal').classList.add('active');
   }
@@ -656,7 +985,79 @@
     document.getElementById('productModal').classList.remove('active');
   }
 
-  document.addEventListener('DOMContentLoaded', updateContent);
+  // Cart Logic
+  function toggleCart() {
+    document.getElementById('cartSidebar').classList.toggle('active');
+  }
+
+  function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    cart.push(product);
+    updateCartUI();
+    
+    // Show feedback
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.textContent = '✅';
+    setTimeout(() => btn.textContent = originalText, 1000);
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+  }
+
+  function updateCartUI() {
+    const t = translations[currentLang];
+    const cartItems = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total-price');
+    
+    cartCount.textContent = cart.length;
+    cartItems.innerHTML = '';
+    
+    if (cart.length === 0) {
+      cartItems.innerHTML = `<p style="text-align:center; color:#999; margin-top:20px;">${t.emptyCart}</p>`;
+      cartTotal.textContent = 'SAR 0.00';
+      return;
+    }
+    
+    let total = 0;
+    cart.forEach((item, index) => {
+      total += item.price;
+      const itemEl = document.createElement('div');
+      itemEl.className = 'cart-item';
+      itemEl.innerHTML = `
+        <img src="${item.image}" class="cart-item-img">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${t[`p${item.id}Name`]}</div>
+          <div class="cart-item-price">SAR ${item.price.toFixed(2)}</div>
+          <div class="cart-item-remove" onclick="removeFromCart(${index})">${t.remove}</div>
+        </div>
+      `;
+      cartItems.appendChild(itemEl);
+    });
+    
+    cartTotal.textContent = `SAR ${total.toFixed(2)}`;
+  }
+
+  function checkout() {
+    if (cart.length === 0) return;
+    
+    const t = translations[currentLang];
+    let message = currentLang === 'ar' ? 'مرحباً NERIT، أود طلب المنتجات التالية:\n\n' : 'Hello NERIT, I would like to order the following items:\n\n';
+    
+    let total = 0;
+    cart.forEach((item, index) => {
+      message += `${index + 1}. ${t[`p${item.id}Name`]} - SAR ${item.price.toFixed(2)}\n`;
+      total += item.price;
+    });
+    
+    message += `\n${t.totalLabel} SAR ${total.toFixed(2)}`;
+    
+    const waUrl = `https://wa.me/966569899563?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+  }
 
   // AI Assistant
   const aiAssistant = {
@@ -687,7 +1088,6 @@
       this.addMessage('user', text);
       document.getElementById('ai-input').value = '';
       
-      // Simulate AI response
       setTimeout(() => {
         const response = this.generateResponse(text);
         this.addMessage('bot', response);
@@ -698,105 +1098,41 @@
       const q = query.toLowerCase();
       const t = translations[currentLang];
       
-      // Check for product queries
       for (let i = 1; i <= 9; i++) {
         const p = products[i - 1];
         if (q.includes(i.toString()) || q.includes(`قطعة ${i}`) || q.includes(`piece ${i}`)) {
           return currentLang === 'ar' 
-            ? `القطعة ${i}: ${t[`p${i}Name`]} - السعر: ${p.price} - المقاس: ${p.size} - اللون: ${p.color}`
-            : `Piece ${i}: ${t[`p${i}Name`]} - Price: ${p.price} - Size: ${p.size} - Color: ${p.color}`;
+            ? `القطعة ${i}: ${t[`p${i}Name`]} - السعر: SAR ${p.price.toFixed(2)} - المقاس: ${p.size} - اللون: ${p.color}`
+            : `Piece ${i}: ${t[`p${i}Name`]} - Price: SAR ${p.price.toFixed(2)} - Size: ${p.size} - Color: ${p.color}`;
         }
       }
       
-      // Check for price queries
       if (q.includes('سعر') || q.includes('price')) {
         return currentLang === 'ar'
-          ? 'الأسعار تتراوح بين SAR 30.65 و SAR 67.28. هل تريدين معرفة سعر قطعة معينة؟'
-          : 'Prices range from SAR 30.65 to SAR 67.28. Would you like to know the price of a specific piece?';
+          ? 'الأسعار تتراوح بين SAR 99.99 و SAR 189.99. هل تريدين معرفة سعر قطعة معينة؟'
+          : 'Prices range from SAR 99.99 to SAR 189.99. Would you like to know the price of a specific piece?';
       }
       
-      // Check for size queries
       if (q.includes('مقاس') || q.includes('size')) {
         return currentLang === 'ar'
           ? 'المقاسات المتوفرة: M و L. هل تريدين معرفة المقاسات المتوفرة لقطعة معينة؟'
           : 'Available sizes: M and L. Would you like to know the available sizes for a specific piece?';
       }
       
-      // Check for color queries
-      if (q.includes('لون') || q.includes('color')) {
-        return currentLang === 'ar'
-          ? 'لدينا مجموعة متنوعة من الألوان: أبيض، أسود، أزرق كحلي، أخضر، وألوان أخرى. هل تريدين لون معين؟'
-          : 'We have a variety of colors: white, black, navy blue, green, and more. Are you looking for a specific color?';
-      }
-      
-      // Check for delivery queries
       if (q.includes('توصيل') || q.includes('delivery')) {
         return currentLang === 'ar'
           ? 'التوصيل حالياً متاح داخل مدينة جدة فقط. هل تودين الطلب الآن؟'
           : 'Delivery is currently available within Jeddah only. Would you like to place an order?';
       }
       
-      // Default response
       return currentLang === 'ar'
         ? 'شكراً على سؤالكِ! يمكنكِ السؤال عن أي قطعة بالرقم (1-9) أو عن الأسعار والمقاسات. 😊'
         : 'Thank you for your question! You can ask about any piece by number (1-9) or about prices and sizes. 😊';
     }
   };
+
+  document.addEventListener('DOMContentLoaded', updateContent);
 </script>
-
-<!-- AI Assistant Chat -->
-<div id="ai-chat-widget" style="position: fixed; bottom: 30px; right: 30px; z-index: 999;">
-  <button id="ai-toggle" onclick="aiAssistant.toggle()" style="
-    width: 60px; height: 60px; border-radius: 50%; background: #25d366; color: white;
-    border: none; font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all 0.3s; display: flex; align-items: center; justify-content: center;
-  " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</button>
-  
-  <div id="ai-chat-box" style="
-    display: none; position: absolute; bottom: 80px; right: 0; width: 350px; height: 500px;
-    background: white; border-radius: 15px; box-shadow: 0 5px 40px rgba(0,0,0,0.16);
-    flex-direction: column; overflow: hidden;
-  ">
-    <div style="background: #25d366; color: white; padding: 15px; font-weight: bold; text-align: center;">
-      <span id="ai-title">مساعد NERIT الذكي</span>
-    </div>
-    
-    <div id="ai-messages" style="flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 10px;"></div>
-    
-    <div style="padding: 10px; border-top: 1px solid #eee; display: flex; gap: 10px;">
-      <input id="ai-input" type="text" placeholder="اكتبي سؤالكِ..." style="
-        flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px;
-        font-size: 14px; outline: none;
-      " onkeypress="if(event.key==='Enter') aiAssistant.sendMessage(this.value)">
-      <button onclick="aiAssistant.sendMessage(document.getElementById('ai-input').value)" style="
-        background: #25d366; color: white; border: none; border-radius: 50%; width: 40px; height: 40px;
-        cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center;
-      ">➤</button>
-    </div>
-  </div>
-</div>
-
-<style>
-  .ai-message {
-    padding: 10px 12px; border-radius: 12px; max-width: 85%; word-wrap: break-word;
-    font-size: 14px; line-height: 1.4;
-  }
-  .ai-user {
-    background: #25d366; color: white; align-self: flex-end; margin-right: 10px;
-  }
-  .ai-bot {
-    background: #f0f0f0; color: #333; align-self: flex-start; margin-left: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    #ai-chat-box {
-      width: 90vw !important;
-      height: 60vh !important;
-      bottom: 80px !important;
-      right: 5vw !important;
-    }
-  }
-</style>
 
 </body>
 </html>
