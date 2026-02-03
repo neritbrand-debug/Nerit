@@ -809,24 +809,14 @@
       emptyCart: "السلة فارغة",
       aiHeader: "المساعد الذكي NERIT",
       aiPlaceholder: "اكتبي سؤالكِ...",
-      p1Name: "قطعة 01",
-      p1Desc: "فستان بليسيه أبيض بنقوش زهور زرقاء بياقة مربعة وبدون أكمام",
-      p2Name: "قطعة 02",
-      p2Desc: "فستان بليسيه أبيض بنقوش زهور زرقاء بياقة V وأكمام طويلة",
-      p3Name: "قطعة 03",
-      p3Desc: "فستان بليسيه أبيض بنقوش زهور خضراء بياقة V وأكمام طويلة",
-      p4Name: "قطعة 04",
-      p4Desc: "فستان أبيض كلاسيكي بياقة قميص وتصميم ملفوف",
-      p5Name: "قطعة 05",
-      p5Desc: "جمبسوت أسود بدون أكمام بياقة مربعة",
-      p6Name: "قطعة 06",
-      p6Desc: "فستان بنقوش هندسية زرقاء وبيضاء بياقة دائرية",
-      p7Name: "قطعة 07",
-      p7Desc: "جمبسوت أخضر بدون أكمام بياقة مربعة",
-      p8Name: "قطعة 08",
-      p8Desc: "فستان كتان ناعم بلون كحلي بياقة V وأكمام قصيرة",
-      p9Name: "قطعة 09",
-      p9Desc: "فستان كتان ناعم بلون القنب بياقة V وأكمام قصيرة"
+      p1Name: "فستان بليسيه كلاسيك",
+      p1Desc: "فستان بليسيه أنيق بياقة واقفة وسحاب أمامي، متوفر بألوان راقية (أسود، زيتي، كريمي).",
+      p2Name: "فستان أوركيد بليسيه",
+      p2Desc: "فستان بليسيه فاخر بنقوش الأوركيد الزرقاء، يجمع بين الأناقة والراحة.",
+      p3Name: "فستان الربيع الأخضر",
+      p3Desc: "فستان بليسيه بنقوش ربيعية خضراء ناعمة، مثالي للمناسبات الراقية.",
+      p4Name: "فستان الزهور الكلاسيكي",
+      p4Desc: "فستان بليسيه أبيض بنقوش زهور كلاسيكية، يعكس هدوء الروح وأناقة المظهر."
     },
     en: {
       heroTitle: "NERIT",
@@ -855,28 +845,23 @@
       emptyCart: "Cart is empty",
       aiHeader: "NERIT AI Assistant",
       aiPlaceholder: "Type your question...",
-      p1Name: "Piece 01",
-      p1Desc: "White pleated dress with blue floral print, square neckline, and sleeveless design",
-      p2Name: "Piece 02",
-      p2Desc: "White pleated dress with blue floral print, V-neck, and long sleeves",
-      p3Name: "Piece 03",
-      p3Desc: "White pleated dress with green floral print, V-neck, and long sleeves",
-      p4Name: "Piece 04",
-      p4Desc: "Classic white collared wrap dress",
-      p5Name: "Piece 05",
-      p5Desc: "Black sleeveless jumpsuit with square neckline",
-      p6Name: "Piece 06",
-      p6Desc: "Blue and white geometric pattern dress with round neckline",
-      p7Name: "Piece 07",
-      p7Desc: "Green sleeveless jumpsuit with square neckline",
-      p8Name: "Piece 08",
-      p8Desc: "Navy blue linen dress with V-neck and short sleeves",
-      p9Name: "Piece 09",
-      p9Desc: "Soft hemp-colored linen dress with V-neck and short sleeves"
+      p1Name: "Classic Pleated Dress",
+      p1Desc: "Elegant pleated dress with stand collar and front zipper, available in sophisticated colors (Black, Olive, Cream).",
+      p2Name: "Orchid Pleated Dress",
+      p2Desc: "Luxury pleated dress with blue orchid patterns, combining elegance and comfort.",
+      p3Name: "Green Spring Dress",
+      p3Desc: "Pleated dress with soft green spring patterns, perfect for high-end occasions.",
+      p4Name: "Classic Floral Dress",
+      p4Desc: "White pleated dress with classic floral patterns, reflecting soul tranquility and elegant appearance."
     }
   };
 
-  const products = [];
+  const products = [
+    { id: 1, image: "assets/products/new/pleated-trio.png", sku: "NR-PL-001", color: "Black, Olive, Cream", size: "Free Size", price: 249.99, weight: "0.4 kg" },
+    { id: 2, image: "assets/products/new/blue-floral-pleated.png", sku: "NR-PL-002", color: "White/Blue Floral", size: "Free Size", price: 289.99, weight: "0.45 kg" },
+    { id: 3, image: "assets/products/new/green-floral-pleated.png", sku: "NR-PL-003", color: "Cream/Green Floral", size: "Free Size", price: 289.99, weight: "0.45 kg" },
+    { id: 4, image: "assets/products/new/white-floral-pleated.png", sku: "NR-PL-004", color: "White/Floral", size: "Free Size", price: 289.99, weight: "0.45 kg" }
+  ];
 
   function toggleLang() {
     currentLang = currentLang === 'ar' ? 'en' : 'ar';
